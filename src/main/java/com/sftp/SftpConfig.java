@@ -31,7 +31,7 @@ public class SftpConfig {
 		template.setAutoCreateDirectory(true);
 		template.setUseTemporaryFileName(false);
 		ExpressionParser EXPRESSION_PARSER = new SpelExpressionParser();
-		template.setRemoteDirectoryExpression(EXPRESSION_PARSER.parseExpression("headers['remote']"));
+		template.setRemoteDirectoryExpression(EXPRESSION_PARSER.parseExpression("headers['/']"));
 		return template;
 	}
 }
