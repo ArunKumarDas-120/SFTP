@@ -21,11 +21,12 @@ public class SftpApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		sftpService.checkFileExist("/app/H2H/", "test.txt");
-		sftpService.uplodaFile(new File("E:/test/597a2e56-48f60d1501179234597a2d62924087.55398550.jpg"),
-				Optional.of("/app/Outbound/"));
+		sftpService.checkFileExist("./app/Outbound/", "5051aea0-1c2994erotika-9f262a93842d.jpg");
 
-		sftpService.checkList(null);
+		sftpService.uplodaFile(new File("E:/test/5471fddf-ea502247032d5330b29b.jpg"),
+				Optional.of("./app/Outbound/"));
+
+		sftpService.checkList("./app/Outbound/");
 
 	}
 

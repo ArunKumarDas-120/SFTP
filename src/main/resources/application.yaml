@@ -1,7 +1,7 @@
 sftp:
   gate-way:
-    host: 192.168.0.102
+    host: 192.168.133.128
     port: 22
-    user-name: test
+    user-name: arun
     password: test
     allow-unknown-keys: true

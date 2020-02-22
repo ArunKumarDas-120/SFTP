@@ -37,7 +37,7 @@ public class SftpService {
 		
 		for(int i=0;i<list.length;i++) {
 			LsEntry entry = list[i];
-			System.out.println(entry.getAttrs());
+			System.out.println(entry.getFilename());
 		}
 	}
 
