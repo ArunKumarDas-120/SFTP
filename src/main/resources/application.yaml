@@ -4,3 +4,8 @@ secureFtp:
   userName: arun
   password: test
   allowUnknownKeys: true
+  
+  
+sftp:
+  autoconfigure:
+    enabled: true
