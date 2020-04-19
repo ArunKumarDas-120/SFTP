@@ -1,6 +1,8 @@
 package com.sftp;
 
+
 import java.io.File;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -30,6 +32,14 @@ public class SftpService {
 			System.out.println(template.send(message, subFolder.get(), FileExistsMode.IGNORE));
 		else
 			System.out.println(template.send(message, FileExistsMode.REPLACE));
+	}
+	
+	public void uploadMultiple(List<File> files, String subfolder) {
+		files.forEach(f ->{
+			Message<File> message = MessageBuilder.withPayload(f).build();
+			System.out.println(template.send(message, Objects.nonNull(subfolder) ? subfolder : "/", FileExistsMode.IGNORE));
+		});
+		
 	}
 	
 	public void checkList(String folder) {

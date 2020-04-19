@@ -1,7 +1,6 @@
-sftp:
-  gate-way:
-    host: 192.168.133.128
-    port: 22
-    user-name: arun
-    password: test
-    allow-unknown-keys: true
+secureFtp:
+  host: 192.168.133.130
+  port: 22
+  userName: arun
+  password: test
+  allowUnknownKeys: true
