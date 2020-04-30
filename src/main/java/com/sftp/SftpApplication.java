@@ -18,7 +18,7 @@ public class SftpApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 	
-		//sftpService.uplodaFile(new File("D:/test/candace-leilani-2-1920x1080.jpg"), Optional.of("/app/multiple/"));
+		//sftpService.upload(new File("D:/test/candace-leilani-2-1920x1080.jpg"), Optional.of("/app/multiple/"));
 		//sftpService.checkFileExist("./app/multiple/", "279769.jpg");
 		
 

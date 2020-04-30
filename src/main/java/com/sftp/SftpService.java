@@ -26,7 +26,7 @@ public class SftpService {
 		System.out.println(template.exists(remoteDirectory.concat(fileName)));
 	}
 
-	public void uplodaFile(@NonNull File file, Optional<String> subFolder) {
+	public void upload(@NonNull File file, Optional<String> subFolder) {
 		Message<File> message = MessageBuilder.withPayload(file).build();
 		if (subFolder.isPresent())
 			System.out.println(template.send(message, subFolder.get(), FileExistsMode.IGNORE));

@@ -9,9 +9,3 @@ secureFtp:
 sftp:
   autoconfigure:
     enabled: true
-    
-folder:
-  data: '{  "002" : {"Tag" : "Location1","NoTag" : "Location2"} , 
-            "004-008" : {"NoTag" : "Location"},
-            "AMLO" : {"NoTag" : "Location"}
-         }'

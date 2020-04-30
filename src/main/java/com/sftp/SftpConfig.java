@@ -14,9 +14,7 @@ import com.jcraft.jsch.ChannelSftp.LsEntry;
 
 @Configuration
 public class SftpConfig {
-	
-	@Value(value = "#{${folder.data}}")
-	private Map<String,Map<String,String>> xx;
+
 
 	@Bean
 	public RemoteFileTemplate<LsEntry> sftpTemplate(@Value("${secureFtp.host:localhost}") String host,
@@ -33,7 +31,6 @@ public class SftpConfig {
 		template.setAutoCreateDirectory(true);
 		template.setUseTemporaryFileName(false);
 		template.setRemoteDirectoryExpression(new SpelExpressionParser().parseExpression("headers['/']"));
-		System.out.println(xx);
 		return template;
 	}
 }
