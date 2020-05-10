@@ -30,7 +30,7 @@ public class SftpConfig {
 		SftpRemoteFileTemplate template = new SftpRemoteFileTemplate(factory);
 		template.setAutoCreateDirectory(true);
 		template.setUseTemporaryFileName(false);
-		template.setRemoteDirectoryExpression(new SpelExpressionParser().parseExpression("headers['/']"));
+		template.setRemoteDirectoryExpression(new SpelExpressionParser().parseExpression("headers['./']"));
 		return template;
 	}
 }
