@@ -5,12 +5,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.expression.common.LiteralExpression;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.integration.file.remote.RemoteFileTemplate;
 import org.springframework.integration.sftp.session.DefaultSftpSessionFactory;
 import org.springframework.integration.sftp.session.SftpRemoteFileTemplate;
 
 import com.jcraft.jsch.ChannelSftp.LsEntry;
+import org.springframework.jndi.support.SimpleJndiBeanFactory;
 
 @Configuration
 public class SftpConfig {
@@ -27,10 +29,13 @@ public class SftpConfig {
 		factory.setUser(userName);
 		factory.setPassword(password);
 		factory.setAllowUnknownKeys(allowUnknownKeys);
-		SftpRemoteFileTemplate template = new SftpRemoteFileTemplate(factory);
+		RemoteFileTemplate<LsEntry> template = new SftpRemoteFileTemplate(factory);
 		template.setAutoCreateDirectory(true);
 		template.setUseTemporaryFileName(false);
-		template.setRemoteDirectoryExpression(new SpelExpressionParser().parseExpression("headers['./']"));
+		template.setBeanFactory(new SimpleJndiBeanFactory());
+		template.setRemoteDirectoryExpression(new LiteralExpression(""));
+		template.afterPropertiesSet();
+		//template.setRemoteDirectoryExpression(new SpelExpressionParser().parseExpression("headers['./']"));
 		return template;
 	}
 }

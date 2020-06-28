@@ -5,6 +5,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.File;
+import java.util.Optional;
+
 @SpringBootApplication
 public class SftpApplication implements CommandLineRunner {
 
@@ -18,9 +21,9 @@ public class SftpApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		// sftpService.upload(new File("D:/Hot/candace-leilani-2-1920x1080.jpg"),
-		// Optional.of("/app/multiple/"));
-		// sftpService.checkFileExist("./app/multiple/", "279769.jpg");
+		 sftpService.upload(new File("D:\\Wall\\Desktop-Wallpaper-HD7.jpg"),
+		 Optional.of("/app/multiple/"));
+		 sftpService.checkFileExist("./app/multiple/", "Desktop-Wallpaper-HD7.jpg");
 		sftpService.download();
 
 	}

@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.common.LiteralExpression;
 import org.springframework.integration.file.remote.InputStreamCallback;
 import org.springframework.integration.file.remote.RemoteFileTemplate;
 import org.springframework.integration.file.support.FileExistsMode;
@@ -34,10 +35,11 @@ public class SftpService {
 
 	public void upload(@NonNull File file, Optional<String> subFolder) {
 		Message<File> message = MessageBuilder.withPayload(file).build();
-		if (subFolder.isPresent())
-			System.out.println(template.send(message, subFolder.get(), FileExistsMode.IGNORE));
+		if (subFolder.isPresent()) {
+			System.out.println(template.send(message,subFolder.get(), FileExistsMode.IGNORE));
+		}
 		else
-			System.out.println(template.send(message, FileExistsMode.REPLACE));
+			System.out.println(template.send(message,subFolder.get(), FileExistsMode.REPLACE));
 	}
 
 	public void uploadMultiple(List<File> files, String subfolder) {
@@ -61,20 +63,17 @@ public class SftpService {
 	public void download() {
 
 		final byte[] b = new byte[2048];
-		template.get("/app/multiple/candace-leilani-2-1920x1080.jpg", new InputStreamCallback() {
-			@Override
-			public void doWithInputStream(InputStream is) throws IOException {
-				try (OutputStream os = FileUtils.openOutputStream(new File("target/sftp-in/candace-leilani-2-1920x1080.jpg"),true)) {
-					int length;
-					while ((length = is.read(b)) != -1) {
-						os.write(b, 0, length);
-					}
-
-				} catch (FileNotFoundException fe) {
-					fe.printStackTrace();
+		template.get("/app/multiple/Desktop-Wallpaper-HD7.jpg", is -> {
+			try (OutputStream os = FileUtils.openOutputStream(new File("target/sftp-in/candace-leilani-2-1920x1080.jpg"),true)) {
+				int length;
+				while ((length = is.read(b)) != -1) {
+					os.write(b, 0, length);
 				}
 
+			} catch (FileNotFoundException fe) {
+				fe.printStackTrace();
 			}
+
 		});
 	}
 

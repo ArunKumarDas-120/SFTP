@@ -1,11 +1,14 @@
+
+sftp:
+  autoconfigure:
+    enabled: false
+spring:
+  application:
+    name: sftp
+
 secureFtp:
   host: localhost
   port: 22
   userName: arun
   password: arun
   allowUnknownKeys: true
-  
-  
-sftp:
-  autoconfigure:
-    enabled: false
